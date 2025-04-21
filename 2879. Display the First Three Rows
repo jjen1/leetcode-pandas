@@ -1,0 +1,18 @@
+DataFrame: employees
++-------------+--------+
+| Column Name | Type   |
++-------------+--------+
+| employee_id | int    |
+| name        | object |
+| department  | object |
+| salary      | int    |
++-------------+--------+
+Write a solution to display the first 3 rows of this DataFrame.
+
+import pandas as pd
+
+def selectFirstrows(employees: pd.DataFrame) -> pd.DataFrame:
+  results = employees.head(3)
+  #or employees[:3]
+  
+  return results
