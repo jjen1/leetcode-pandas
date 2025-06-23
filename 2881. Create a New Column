@@ -15,8 +15,6 @@ The result format is in the following example.
 import pandas as pd
 
 def createBonusColumn(employees: pd.DataFrame) -> pd.DataFrame:
-    df = employees.assign(bonus=employees['salary']*2)
-    return df
-
-    #or
-    #employees['bonus'] = employees['salary']*2
+    bonus = (employees.salary)*2
+    employees["bonus"] = bonus
+    return employees
