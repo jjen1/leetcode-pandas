@@ -26,5 +26,5 @@ Each row of this table indicates the ID of an order and the ID of the customer w
 Write a solution to find all customers who never order anything.
 
     merged = customers.merge(orders, how='left', left_on = 'id', right_on = 'customerId')
-    results = merged[merged['customerId']].isna()[['name']].rename(columns={'name':'Customers'})
+    results = merged[merged['customerId'].isna()][['name']].rename(columns={'name':'Customers'})
     return results
