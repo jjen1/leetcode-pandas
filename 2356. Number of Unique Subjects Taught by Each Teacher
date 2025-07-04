@@ -1,0 +1,20 @@
+Table: Teacher
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| teacher_id  | int  |
+| subject_id  | int  |
+| dept_id     | int  |
++-------------+------+
+
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+
+Return the result table in any order.
+
+import pandas as pd
+
+def count_unique_subjects(teacher: pd.DataFrame) -> pd.DataFrame:
+    results = teacher.groupby('teacher_id')['subject_id'].nunique().reset_index(name='cnt')
+    return results[['teacher_id','cnt']]
+
