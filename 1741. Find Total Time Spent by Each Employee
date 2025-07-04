@@ -1,0 +1,21 @@
+Table: Employees
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| emp_id      | int  |
+| event_day   | date |
+| in_time     | int  |
+| out_time    | int  |
++-------------+------+
+
+Write a solution to calculate the total time in minutes spent by each employee on each day at the office. Note that within one day, an employee can enter and leave more than once. The time spent in the office for a single entry is out_time - in_time.
+
+Return the result table in any order.
+
+import pandas as pd
+
+def total_time(employees: pd.DataFrame) -> pd.DataFrame:
+    employees['total_time'] = (employees.groupby(['emp_id','event_day'])['out_time'].transform('sum')) - (employees.groupby(['emp_id','event_day'])['in_time'].transform('sum'))
+    return employees[['event_day','emp_id','total_time']].rename(columns={'event_day': 'day'}).drop_duplicates()
+
